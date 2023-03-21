@@ -7,7 +7,7 @@ export default defineConfig({
     solidPlugin(),
     WindiCSS({
       scan: {
-        fileExtensions: ['html', 'js', 'ts', 'jsx', 'tsx'],
+        fileExtensions: ['html', 'ts', 'tsx'],
       },
     }),
   ],
