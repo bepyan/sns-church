@@ -1,5 +1,11 @@
 import { createServer } from 'http';
 
+import {
+  ClientToServerEvents,
+  InterServerEvents,
+  ServerToClientEvents,
+  SocketData,
+} from '@sns/shared';
 import { Application } from 'express';
 import { Server } from 'socket.io';
 

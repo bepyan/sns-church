@@ -1,4 +1,5 @@
-import io from 'socket.io-client';
+import { ClientToServerEvents, ServerToClientEvents } from '@sns/shared';
+import { io, Socket } from 'socket.io-client';
 import { Component, createSignal } from 'solid-js';
 
 // state
@@ -6,14 +7,14 @@ const [connected, setConnected] = createSignal(false);
 const [messageList, setMessageList] = createSignal([]);
 
 // socket
-const socket = io('http://localhost:8000');
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:8000');
 
 socket.on('connect', () => {
   console.log('SOCKET CONNECTED!', socket.id);
   setConnected(true);
 });
 
-socket.on('updateMessages', (message: string) => {
+socket.on('updateMessages', (message) => {
   console.log('updateMessages', message);
 
   setMessageList((prev) => [message, ...prev]);

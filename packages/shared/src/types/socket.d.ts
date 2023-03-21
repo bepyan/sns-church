@@ -1,18 +1,18 @@
 /* eslint-disable unused-imports/no-unused-vars */
 
-interface ServerToClientEvents {
+export interface ServerToClientEvents {
   updateMessages: (message: string) => void;
 }
 
-interface ClientToServerEvents {
+export interface ClientToServerEvents {
   sendMessage: (message: string) => void;
 }
 
-interface InterServerEvents {
+export interface InterServerEvents {
   ping: () => void;
 }
 
-interface SocketData {
+export interface SocketData {
   name: string;
   age: number;
 }
