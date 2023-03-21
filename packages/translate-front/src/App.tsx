@@ -1,5 +1,6 @@
+import { helloWorld } from '@sns/shared';
 import type { Component } from 'solid-js';
-import { helloWorld } from '@sns-church/shared';
+
 const App: Component = () => {
   helloWorld();
 

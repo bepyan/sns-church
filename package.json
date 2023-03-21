@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "shared": "pnpm -F @sns-church/shared",
-    "front": "pnpm -F @sns-church/translate-front",
-    "socket": "pnpm -F @sns-church/translate-socket",
+    "shared": "pnpm -F @sns/shared",
+    "front": "pnpm -F @sns/translate-front",
+    "socket": "pnpm -F @sns/translate-socket",
     "dev": "pnpm -r dev",
     "build": "pnpm -r build",
     "serve": "pnpm -r serve"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "typescript": "^5.0.2"
+  }
 }
