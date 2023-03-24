@@ -1,4 +1,6 @@
+import socket from './socket';
 import { setIsRecognizing } from './states';
+import translate from './translate';
 
 const SpeechRecognition =
   (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -24,8 +26,13 @@ recognition.onresult = function (event) {
     }
   }
 
-  console.log('Interim transcript:', interimTranscript);
-  console.log('Final transcript:', finalTranscript);
+  socket.emit('sendCurrentMessage', interimTranscript);
+
+  if (finalTranscript) {
+    translate(finalTranscript, (text) => {
+      socket.emit('sendMessage', text);
+    });
+  }
 };
 
 recognition.onerror = function (event) {

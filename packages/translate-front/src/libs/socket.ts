@@ -1,7 +1,7 @@
 import { ClientToServerEvents, ServerToClientEvents } from '@sns/shared';
 import { io, Socket } from 'socket.io-client';
 
-import { addMassage, setIsSocketConnected } from './states';
+import { addMassage, setCurrentMessage, setIsSocketConnected } from './states';
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:8000');
 
@@ -11,7 +11,11 @@ socket.on('connect', () => {
 });
 
 socket.on('updateMessages', (message) => {
-  addMassage(message);
+  addMassage(message.trim());
+});
+
+socket.on('updateCurrentMessage', (message) => {
+  setCurrentMessage(message.trim());
 });
 
 socket.on('connect_error', () => {

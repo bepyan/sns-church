@@ -24,9 +24,13 @@ export default ({ app }: { app: Application }) => {
     console.log('a user connected:', socket.id);
 
     socket.on('sendMessage', (message) => {
-      console.log('sendMessage:', message);
       socket.emit('updateMessages', message);
       socket.broadcast.emit('updateMessages', message);
+    });
+
+    socket.on('sendCurrentMessage', (message) => {
+      socket.emit('updateCurrentMessage', message);
+      socket.broadcast.emit('updateCurrentMessage', message);
     });
 
     socket.on('disconnect', () => {
