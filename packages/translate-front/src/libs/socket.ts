@@ -3,7 +3,11 @@ import { io, Socket } from 'socket.io-client';
 
 import { addMassage, setCurrentMessage, setIsSocketConnected } from './states';
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io('http://localhost:8000');
+// https://sns-church.onrender.com/api
+// http://localhost:8000
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
+  'https://sns-church.onrender.com',
+);
 
 socket.on('connect', () => {
   console.log('SOCKET CONNECTED!', socket.id);

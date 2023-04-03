@@ -2,6 +2,6 @@ import './index.css';
 import 'virtual:windi.css';
 import { render } from 'solid-js/web';
 
-import App from './app';
+import App from './App';
 
 render(() => <App />, document.getElementById('root'));
