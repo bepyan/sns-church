@@ -1,19 +1,7 @@
 import './index.css';
 import 'virtual:windi.css';
-import { Route, Router, Routes } from '@solidjs/router';
 import { render } from 'solid-js/web';
 
-import cn from './pages/cn';
-import top from './pages/top';
+import App from './app';
 
-render(
-  () => (
-    <Router>
-      <Routes>
-        <Route path='/' component={top} />
-        <Route path='/cn' component={cn} />
-      </Routes>
-    </Router>
-  ),
-  document.getElementById('root'),
-);
+render(() => <App />, document.getElementById('root'));
