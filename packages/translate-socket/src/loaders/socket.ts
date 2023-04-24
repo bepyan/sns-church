@@ -33,6 +33,11 @@ export default ({ app }: { app: Application }) => {
       socket.broadcast.emit('updateCurrentMessage', message);
     });
 
+    socket.on('sendCurrentTranslatedMessage', (message) => {
+      socket.emit('updateCurrentTranslatedMessage', message);
+      socket.broadcast.emit('updateCurrentTranslatedMessage', message);
+    });
+
     socket.on('disconnect', () => {
       console.log('user disconnected:', socket.id);
     });

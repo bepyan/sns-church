@@ -6,9 +6,9 @@ const SpeechRecognition =
   (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
-recognition.lang = 'ko-KR';
 recognition.continuous = true;
 recognition.interimResults = true;
+recognition.lang = 'ko-KR';
 
 recognition.onstart = function () {
   setIsRecognizing(true);
@@ -19,10 +19,13 @@ recognition.onresult = function (event) {
   let finalTranscript = '';
 
   for (let i = event.resultIndex; i < event.results.length; ++i) {
-    if (event.results[i].isFinal) {
-      finalTranscript += event.results[i][0].transcript;
+    const result = event.results[i];
+    const transcript = result[0].transcript;
+
+    if (result.isFinal) {
+      finalTranscript += transcript;
     } else {
-      interimTranscript += event.results[i][0].transcript;
+      interimTranscript += transcript;
     }
   }
 
@@ -32,6 +35,12 @@ recognition.onresult = function (event) {
     translate(finalTranscript, (text) => {
       socket.emit('sendMessage', text);
     });
+  } else {
+    if (interimTranscript.endsWith('니다')) {
+      translate(interimTranscript, (text) => {
+        socket.emit('sendCurrentTranslatedMessage', text);
+      });
+    }
   }
 };
 

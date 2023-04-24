@@ -2,9 +2,17 @@ import recognition from '../libs/recognition';
 import { isRecognizing } from '../libs/states';
 
 export default function BroadcastMike() {
+  const toggleRecognition = () => {
+    if (isRecognizing()) {
+      recognition.stop();
+    } else {
+      recognition.start();
+    }
+  };
+
   return (
     <div class='flex items-center justify-center'>
-      <button onClick={() => recognition.start()}>
+      <button onClick={toggleRecognition} class='transition-colors active:opacity-60'>
         {isRecognizing() ? (
           <svg
             xmlns='http://www.w3.org/2000/svg'
