@@ -34,6 +34,7 @@ recognition.onresult = function (event) {
   if (finalTranscript) {
     translate(finalTranscript, (text) => {
       socket.emit('sendMessage', text);
+      socket.emit('sendCurrentTranslatedMessage', '');
     });
   } else {
     if (interimTranscript.endsWith('니다')) {
@@ -45,6 +46,7 @@ recognition.onresult = function (event) {
 };
 
 recognition.onerror = function (event) {
+  setIsRecognizing(false);
   console.log(event.error);
 };
 

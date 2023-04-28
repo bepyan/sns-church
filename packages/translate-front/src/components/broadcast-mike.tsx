@@ -12,7 +12,10 @@ export default function BroadcastMike() {
 
   return (
     <div class='flex items-center justify-center'>
-      <button onClick={toggleRecognition} class='transition-colors active:opacity-60'>
+      <button
+        onClick={toggleRecognition}
+        class='transition-colors hover:opacity-90 active:opacity-50'
+      >
         {isRecognizing() ? (
           <svg
             xmlns='http://www.w3.org/2000/svg'

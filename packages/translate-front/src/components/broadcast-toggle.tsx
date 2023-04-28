@@ -2,7 +2,11 @@ import { isBroadCastMode, setIsBroadCastMode } from '../libs/states';
 
 export default function BroadcastToggle(props) {
   return (
-    <button {...props} onClick={() => setIsBroadCastMode(!isBroadCastMode())}>
+    <button
+      {...props}
+      onClick={() => setIsBroadCastMode(!isBroadCastMode())}
+      class='hover:opacity-80 active:opacity-50'
+    >
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256' class='h-6 w-6'>
         {isBroadCastMode() ? (
           <path
