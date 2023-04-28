@@ -9,8 +9,8 @@ import {
 } from './states';
 
 const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
-  'http://localhost:8000',
-  // 'https://sns-church.onrender.com',
+  // 'http://localhost:8000',
+  'https://sns-church.onrender.com',
 );
 
 socket.on('connect', () => {
