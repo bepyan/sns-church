@@ -36,12 +36,19 @@ recognition.onresult = function (event) {
       socket.emit('sendMessage', text);
       socket.emit('sendCurrentTranslatedMessage', '');
     });
-  } else {
-    if (interimTranscript.endsWith('니다')) {
-      translate(interimTranscript, (text) => {
-        socket.emit('sendCurrentTranslatedMessage', text);
-      });
-    }
+    return;
+  }
+
+  if (
+    interimTranscript.endsWith('니다') ||
+    interimTranscript.endsWith('시다') ||
+    interimTranscript.endsWith('겠죠') ||
+    interimTranscript.endsWith('어요') ||
+    interimTranscript.endsWith('소서')
+  ) {
+    translate(interimTranscript, (text) => {
+      socket.emit('sendCurrentTranslatedMessage', text);
+    });
   }
 };
 
