@@ -42,8 +42,17 @@ recognition.onresult = function (event) {
   if (
     interimTranscript.endsWith('니다') ||
     interimTranscript.endsWith('시다') ||
+    interimTranscript.endsWith('시고') ||
+    interimTranscript.endsWith('이라') ||
+    interimTranscript.endsWith('되죠') ||
+    interimTranscript.endsWith('나요') ||
+    interimTranscript.endsWith('데요') ||
+    interimTranscript.endsWith('세요') ||
+    interimTranscript.endsWith('지만') ||
+    interimTranscript.endsWith('하거든요') ||
     interimTranscript.endsWith('겠죠') ||
     interimTranscript.endsWith('어요') ||
+    interimTranscript.endsWith('아요') ||
     interimTranscript.endsWith('소서')
   ) {
     translate(interimTranscript, (text) => {
