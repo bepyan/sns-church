@@ -19,7 +19,7 @@ socket.on('connect', () => {
 });
 
 socket.on('updateMessages', (message) => {
-  addMassage(message.trim());
+  addMassage(message);
 });
 
 socket.on('updateCurrentMessage', (message) => {
