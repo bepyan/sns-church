@@ -1,7 +1,12 @@
 /* eslint-disable unused-imports/no-unused-vars */
 
+type TMessage = {
+  message: string;
+  time: string;
+};
+
 export interface ServerToClientEvents {
-  updateMessages: (message: string) => void;
+  updateMessages: (props: TMessage) => void;
   updateCurrentMessage: (message: string) => void;
   updateCurrentTranslatedMessage: (message: string) => void;
 }

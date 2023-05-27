@@ -6,6 +6,7 @@ import {
   ServerToClientEvents,
   SocketData,
 } from '@sns/shared';
+import { format } from 'date-fns';
 import { Application } from 'express';
 import { Server } from 'socket.io';
 
@@ -24,8 +25,13 @@ export default ({ app }: { app: Application }) => {
     console.log('a user connected:', socket.id);
 
     socket.on('sendMessage', (message) => {
-      socket.emit('updateMessages', message);
-      socket.broadcast.emit('updateMessages', message);
+      const props = {
+        message: message.trim(),
+        time: format(new Date(), 'HH:mm:ss'),
+      };
+
+      socket.emit('updateMessages', props);
+      socket.broadcast.emit('updateMessages', props);
     });
 
     socket.on('sendCurrentMessage', (message) => {
