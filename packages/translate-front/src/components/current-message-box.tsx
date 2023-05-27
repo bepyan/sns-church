@@ -1,6 +1,14 @@
 import { currentMessage, currentTranslatedMessage } from '../libs/states';
 
 export default function CurrentMessageBox() {
+  window.setInterval(function () {
+    const $currentMessage = document.getElementById('currentMessage');
+    $currentMessage.scrollTop = $currentMessage.scrollHeight;
+
+    const $currentTrans = document.getElementById('currentTrans');
+    $currentTrans.scrollTop = $currentTrans.scrollHeight;
+  }, 1000);
+
   return (
     <div class='border border-dashed rounded-md flex text-sm p-3 gap-2 items-start sm:(text-base)'>
       <svg
@@ -18,10 +26,16 @@ export default function CurrentMessageBox() {
         />
       </svg>
       <div class='flex-1'>
-        <div class='border-b border-dashed min-h-8 max-h-24 pb-2 overflow-y-scroll break-words'>
+        <div
+          id='currentMessage'
+          class='border-b border-dashed min-h-8 max-h-24 pb-2 no-scrollbar no-scroll overflow-y-scroll break-words'
+        >
           {currentMessage()}
         </div>
-        <div class='min-h-8 max-h-24 pt-2 overflow-y-scroll break-words'>
+        <div
+          id='currentTrans'
+          class='min-h-8 max-h-24 pt-2 no-scrollbar overflow-y-scroll break-words'
+        >
           {currentTranslatedMessage()}
         </div>
       </div>
